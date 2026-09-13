@@ -1,0 +1,5 @@
+# Kamal deploy secrets — template lives at .kamal/secrets.example
+/.kamal/secrets
+
+# macOS
+.DS_Store

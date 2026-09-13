@@ -1,0 +1,12 @@
+# Only index.html, images/ and config/nginx.conf belong in the image.
+.git
+.gitignore
+.github
+.kamal
+config/deploy.yml
+docs
+README.md
+Dockerfile
+.dockerignore
+.DS_Store
+**/.DS_Store
