@@ -1,0 +1,63 @@
+# B9 (b9baseball.com) — static nginx container on onside-web, via Kamal 2.
+# Conventions follow onside-rails and captain-rails on the same host.
+# Cutover runbook: docs/hosting.md
+#
+# Name of the Kamal service. Used to name containers on onside-web.
+service: b9-baseball
+
+# Name of the container image (ghcr.io/onside-llc/b9-baseball).
+image: onside-llc/b9-baseball
+
+# Deploy to onside-web, the same droplet that runs every other Onside
+# production surface.
+servers:
+  web:
+    - 167.99.1.144
+
+# kamal-proxy terminates TLS with Let's Encrypt certificates it issues and
+# renews itself. It already carries 14 hostnames on this host.
+#
+# Issuance is HTTP-01, so a hostname only gets a certificate once it resolves
+# to 167.99.1.144. b9.onside.llc is the pre-cutover verification hostname and
+# gets a certificate on the first deploy; b9baseball.com still resolves to the
+# DigitalOcean App Platform edge and will not be certificated until the DNS
+# flip in docs/hosting.md. kamal-proxy retries, so that is expected and does
+# not fail the deploy.
+#
+# www.b9baseball.com is deliberately absent: it has no DNS record today, and
+# a host that can never answer HTTP-01 is a permanently failing certificate
+# order. Add the record first, then add the host here. See docs/hosting.md.
+proxy:
+  ssl: true
+  hosts:
+    - b9baseball.com
+    - b9.onside.llc
+  app_port: 80
+  healthcheck:
+    path: /up
+    interval: 10
+    timeout: 30
+
+# Credentials for the image host. Values come from .kamal/secrets, which is
+# gitignored — see .kamal/secrets.example.
+registry:
+  server: ghcr.io
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# onside-web is amd64; builds run on an arm64 Mac, so cross-build explicitly.
+builder:
+  arch: amd64
+  cache:
+    type: registry
+    image: onside-llc/b9-baseball-build-cache
+
+# No env block on purpose: a static site has no runtime configuration and no
+# runtime secrets. If this template ever needs one, add it here, never in the
+# image.
+
+aliases:
+  logs: app logs -f
+  shell: app exec --interactive --reuse "sh"

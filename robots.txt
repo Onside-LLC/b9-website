@@ -1,0 +1,10 @@
+# b9baseball.com
+#
+# Everything on this site is public marketing content. There is no admin area
+# and no API: the one dynamic surface, the lesson-inquiry form, posts to
+# onside.llc rather than to anything hosted here.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://b9baseball.com/sitemap.xml

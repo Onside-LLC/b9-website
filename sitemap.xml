@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Static sitemap: this site has no build step and no server-side rendering, so
+  there is nothing to generate it from. Edit it by hand when a page is added.
+
+  The two placeholder camp pages under /camps/ are deliberately absent. They
+  carry noindex and sentinel dates in their SportsEvent markup and must not be
+  submitted to Google. Add each real camp URL here when it is created, and keep
+  past camps listed: the archive is the point.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://b9baseball.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://b9baseball.com/programs/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://b9baseball.com/lessons/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://b9baseball.com/camps/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://b9baseball.com/coaches/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://b9baseball.com/teams/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

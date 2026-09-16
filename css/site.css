@@ -1,0 +1,603 @@
+/* Bottom of the Ninth Baseball and Softball Academy
+ *
+ * Concept B ("Family Friendly Local") design system, extracted from the
+ * single-page comp into one stylesheet for the multi-page Foundation site.
+ * No build step, no preprocessor. Edit this file directly.
+ *
+ * Sections, in order:
+ *   1. Tokens and base
+ *   2. Layout primitives
+ *   3. Header and navigation
+ *   4. Hero and facts band
+ *   5. Cards (programs, coaches, visit)
+ *   6. Results strip and alumni wall (carried over from concept A)
+ *   7. Camps and events
+ *   8. Lead form
+ *   9. Placeholder ("TK") markers
+ *  10. Footer
+ */
+
+/* ---------------------------------------------------------------- 1. Tokens */
+
+:root {
+  --cream: #FBF7EE;
+  --cream-2: #F2EBDA;
+  --clay: #C6511E;
+  --clay-deep: #9A3E15;
+  --grass: #3B6B3A;
+  --grass-deep: #274C27;
+  --ink: #23291F;
+  --ink-60: rgba(35, 41, 31, 0.62);
+  --plate: #B7B8B8;
+  --line: #E6DCC3;
+  --tk-bg: #FFF3D6;
+  --tk-line: #C99A22;
+  --tk-ink: #6F4E06;
+  --display: "Fredoka", "Arial Rounded MT Bold", sans-serif;
+  --body: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--clay); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--grass);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 16px;
+  z-index: 60;
+}
+.skip-link:focus { left: 8px; top: 8px; }
+
+/* ------------------------------------------------------ 2. Layout primitives */
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+section { padding: 76px 0; }
+section.tight { padding: 48px 0; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.eyebrow {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grass);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--clay);
+  display: inline-block;
+}
+
+.section-head { max-width: 46em; margin-bottom: 40px; }
+.section-head h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); margin: 12px 0 12px; }
+.section-head p { color: var(--ink-60); font-size: 1.02rem; }
+
+.prose p { margin-bottom: 14px; color: var(--ink-60); }
+.prose p:last-child { margin-bottom: 0; }
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+.btn-primary { background: var(--clay); color: #fff; }
+.btn-primary:hover { background: var(--clay-deep); }
+.btn-ghost { color: var(--grass); border: 2px solid var(--grass); }
+.btn-ghost:hover { background: #E6EFE1; }
+.btn-disabled {
+  background: var(--cream-2);
+  color: var(--ink-60);
+  border: 2px dashed var(--tk-line);
+  cursor: not-allowed;
+}
+
+.ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.breadcrumb { font-size: 0.86rem; color: var(--ink-60); padding-top: 26px; }
+.breadcrumb a { text-decoration: none; font-weight: 700; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ------------------------------------------------- 3. Header and navigation */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(251, 247, 238, 0.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+/* The source SVG declares width=100 height=150 against a 140x140 viewBox, so
+   pin both axes and let object-fit sort out the mismatch. */
+.logo-mark { width: 42px; height: 42px; object-fit: contain; flex-shrink: 0; }
+.logo-word {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ink);
+  line-height: 1;
+}
+.logo-word span { color: var(--clay); }
+.logo-sub { font-size: 0.7rem; color: var(--ink-60); display: block; margin-top: 2px; }
+
+nav.main-nav { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+nav.main-nav a { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 0.94rem; }
+nav.main-nav a:hover { color: var(--clay); }
+nav.main-nav a[aria-current="page"] { color: var(--clay); box-shadow: inset 0 -3px 0 var(--clay); }
+
+.nav-cta {
+  background: var(--clay);
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.nav-cta:hover { background: var(--clay-deep); }
+.nav-cta[aria-current="page"] { box-shadow: none; }
+
+/* No JavaScript nav toggle: below 900px the bar stacks and the links wrap.
+   Five short labels wrap to two rows and stay reachable without a menu button. */
+@media (max-width: 900px) {
+  .topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  nav.main-nav { justify-content: flex-start; gap: 16px; row-gap: 10px; }
+}
+
+/* -------------------------------------------------- 4. Hero and facts band */
+
+.hero {
+  padding: 60px 24px 56px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.hero h1 { font-size: clamp(2.3rem, 5.2vw, 3.8rem); margin: 16px 0 18px; line-height: 1.05; }
+.hero h1 em { font-style: normal; color: var(--clay); }
+.hero p.lead { font-size: 1.12rem; color: var(--ink-60); max-width: 36em; margin-bottom: 28px; }
+
+.hero-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.hero-photos img {
+  border-radius: 16px;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 28px rgba(35, 41, 31, 0.14);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+.hero-photos .p2 { margin-top: 30px; }
+
+@media (max-width: 880px) {
+  .hero { grid-template-columns: 1fr; gap: 26px; }
+  .hero-photos .p2 { margin-top: 0; }
+}
+
+.page-head { padding: 44px 0 8px; }
+.page-head h1 { font-size: clamp(2rem, 4.6vw, 3rem); margin: 12px 0 14px; line-height: 1.08; }
+.page-head p.lead { font-size: 1.08rem; color: var(--ink-60); max-width: 44em; }
+
+.facts { background: var(--grass); color: #fff; }
+.facts .wrap {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.facts span::before { content: "\2726  "; }
+
+/* ------------------------------------------------------------- 5. Cards */
+
+.programs { background: var(--cream); }
+.prog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.prog-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.prog-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px 22px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.prog-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--clay);
+}
+.prog-card:nth-child(even)::before { background: var(--grass); }
+.prog-card h3 { font-size: 1.15rem; margin: 10px 0 8px; }
+.prog-card p { font-size: 0.94rem; color: var(--ink-60); }
+.prog-card p + p { margin-top: 10px; }
+
+@media (max-width: 880px) { .prog-grid, .prog-grid.cols-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .prog-grid, .prog-grid.cols-3 { grid-template-columns: 1fr; } }
+
+.coaches { background: var(--cream-2); }
+.coach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.coach-card { background: #fff; border-radius: 16px; padding: 26px 24px; border: 1px solid var(--line); }
+.coach-card .role {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+.coach-card h3 { font-size: 1.5rem; margin: 8px 0 12px; }
+.coach-card p { color: var(--ink-60); font-size: 0.96rem; margin-bottom: 8px; }
+.coach-card p:last-child { margin-bottom: 0; }
+@media (max-width: 780px) { .coach-grid { grid-template-columns: 1fr; } }
+
+.visit { background: var(--cream); }
+.visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.visit-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px 26px;
+}
+.visit-card h3 { font-size: 1.3rem; margin-bottom: 14px; }
+.visit-row {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.98rem;
+}
+.visit-row:last-child { border-bottom: none; }
+.visit-row .k { font-weight: 700; min-width: 92px; color: var(--grass-deep); }
+@media (max-width: 780px) { .visit-grid { grid-template-columns: 1fr; } }
+
+.map-frame {
+  border: 0;
+  width: 100%;
+  height: 340px;
+  border-radius: 16px;
+  margin-top: 28px;
+  display: block;
+}
+
+.photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.photo-strip img {
+  border-radius: 16px;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 28px rgba(35, 41, 31, 0.12);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+@media (max-width: 780px) { .photo-strip { grid-template-columns: 1fr 1fr; } }
+
+/* ------------------------------ 6. Results strip and alumni wall (from A) */
+
+/* Carried over from concept A per the operator decision on b9-website#1:
+   the outcomes are the proof, and concept B on its own does not carry them.
+   Restyled into concept B's cream/clay/grass palette. */
+
+.results { background: var(--ink); color: var(--cream); }
+.results h2, .results h3 { color: var(--cream); }
+.results .section-head p { color: rgba(251, 247, 238, 0.72); }
+.results .eyebrow { color: #fff; }
+.results .eyebrow::before { background: var(--clay); }
+
+.score-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(251, 247, 238, 0.16);
+  border: 1px solid rgba(251, 247, 238, 0.16);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.score {
+  background: var(--ink);
+  padding: 26px 24px 28px;
+}
+.score .n {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  line-height: 1;
+  color: #fff;
+  display: block;
+}
+.score .l {
+  display: block;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--cream);
+}
+.score .src {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: rgba(251, 247, 238, 0.6);
+}
+@media (max-width: 780px) { .score-strip { grid-template-columns: 1fr; } }
+
+.alumni-wall {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.alumni-card {
+  background: rgba(251, 247, 238, 0.06);
+  border: 1px solid rgba(251, 247, 238, 0.18);
+  border-radius: 16px;
+  padding: 24px 22px;
+}
+.alumni-card .tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E9A97F;
+}
+.alumni-card h3 { font-size: 1.25rem; margin: 8px 0 8px; }
+.alumni-card p { font-size: 0.92rem; color: rgba(251, 247, 238, 0.72); }
+@media (max-width: 880px) { .alumni-wall { grid-template-columns: 1fr; } }
+
+/* --------------------------------------------------- 7. Camps and events */
+
+.event-list { display: grid; gap: 18px; }
+.event-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px 24px 22px;
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 22px;
+  align-items: center;
+}
+.event-card.past { background: var(--cream-2); opacity: 0.92; }
+.event-when {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--grass-deep);
+  line-height: 1.25;
+}
+.event-card h3 { font-size: 1.2rem; margin-bottom: 6px; }
+.event-card h3 a { text-decoration: none; color: var(--ink); }
+.event-card h3 a:hover { color: var(--clay); }
+.event-card p { font-size: 0.94rem; color: var(--ink-60); }
+@media (max-width: 780px) {
+  .event-card { grid-template-columns: 1fr; gap: 12px; }
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.badge-open { background: #E6EFE1; color: var(--grass-deep); }
+.badge-past { background: var(--plate); color: #2b2b2b; }
+
+.event-detail { display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 32px; align-items: start; }
+.event-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px 24px;
+  position: sticky;
+  top: 140px;
+}
+.event-panel h3 { font-size: 1.2rem; margin-bottom: 12px; }
+.event-panel .btn { width: 100%; text-align: center; }
+@media (max-width: 880px) {
+  .event-detail { grid-template-columns: 1fr; }
+  .event-panel { position: static; }
+}
+
+.notice {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--grass);
+  border-radius: 12px;
+  padding: 18px 20px;
+  font-size: 0.96rem;
+  color: var(--ink-60);
+  margin-bottom: 26px;
+}
+.notice strong { color: var(--ink); }
+
+/* -------------------------------------------------------- 8. Lead form */
+
+.contact { background: var(--grass); color: #fff; }
+.contact .section-head p { color: rgba(255, 255, 255, 0.82); }
+.contact .eyebrow { color: #fff; }
+.contact .eyebrow::before { background: var(--cream); }
+
+form.onside-lead-form {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 30px;
+  color: var(--ink);
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.field-row .field { margin-bottom: 0; }
+.field label { font-size: 0.84rem; font-weight: 700; color: var(--ink); }
+.field input, .field select, .field textarea {
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-family: var(--body);
+  font-size: 0.98rem;
+  color: var(--ink);
+  background: #fff;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--grass); outline: none; }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.submit-btn {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  background: var(--clay);
+  border: none;
+  padding: 15px 26px;
+  border-radius: 999px;
+  cursor: pointer;
+  width: 100%;
+}
+.submit-btn:hover { background: var(--clay-deep); }
+.submit-btn[disabled] { background: var(--plate); cursor: not-allowed; }
+
+/* Swapped in for the submit button when the lead endpoint is unreachable, so
+   the form still gives a parent something to tap. See js/lead-form.js. */
+.btn-call { width: 100%; text-align: center; }
+
+.form-status {
+  margin-top: 16px;
+  font-size: 0.94rem;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.form-status:empty { display: none; }
+.form-status.is-error { background: #FBE7E1; color: #8A2E12; border: 1px solid #E2A78F; }
+.form-status.is-working { background: var(--cream-2); color: var(--ink-60); border: 1px solid var(--line); }
+
+.form-thanks {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 30px;
+  color: var(--ink);
+}
+.form-thanks h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.form-thanks p { color: var(--ink-60); }
+.form-thanks[hidden] { display: none; }
+
+.form-errors { margin: 10px 0 0 18px; }
+
+@media (max-width: 860px) { .field-row { grid-template-columns: 1fr; gap: 0; } .field-row .field { margin-bottom: 16px; } }
+
+/* ------------------------------------------------- 9. Placeholder markers */
+
+/* Per patterns/small-business-web-platform.md: missing client content renders
+   as a visible placeholder backed by an owner-input checklist (CONTENT-TODO.md),
+   never as an invented number. Nothing in a .tk block is a real B9 fact. */
+
+.tk {
+  display: inline-block;
+  background: var(--tk-bg);
+  border: 1px dashed var(--tk-line);
+  color: var(--tk-ink);
+  border-radius: 8px;
+  padding: 2px 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: var(--body);
+}
+.tk-block {
+  display: block;
+  background: var(--tk-bg);
+  border: 1px dashed var(--tk-line);
+  color: var(--tk-ink);
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.tk-block + .tk-block { margin-top: 12px; }
+.results .tk, .results .tk-block { color: var(--tk-ink); }
+
+/* ------------------------------------------------------------ 10. Footer */
+
+footer { background: var(--ink); color: rgba(255, 255, 255, 0.72); padding: 40px 0 26px; font-size: 0.88rem; }
+footer a { color: #fff; text-decoration: none; }
+footer a:hover { color: #E9A97F; }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 28px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.footer-grid h2 {
+  color: #fff;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.footer-grid ul { list-style: none; }
+.footer-grid li { margin-bottom: 8px; }
+.footer-bottom {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+@media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr; } }

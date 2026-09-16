@@ -1,218 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B9 - Bottom of the Ninth Baseball and Softball Academy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#000000',
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baseball and Softball Lessons in Alvin, TX | Bottom of the Ninth</title>
+<meta name="description" content="Indoor hitting, pitching, fielding and catching instruction in Alvin, Texas, taught by coaches from the Alvin College staff. Open Monday to Friday, 4 to 10 PM. Request a lesson.">
+<link rel="canonical" href="https://b9baseball.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bottom of the Ninth Baseball and Softball Academy">
+<meta property="og:title" content="Baseball and Softball Lessons in Alvin, TX | Bottom of the Ninth">
+<meta property="og:description" content="Indoor hitting, pitching, fielding and catching instruction in Alvin, Texas, taught by coaches from the Alvin College staff.">
+<meta property="og:url" content="https://b9baseball.com/">
+<meta property="og:image" content="https://b9baseball.com/images/web/og-team.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@b9_baseball">
+<meta name="twitter:title" content="Baseball and Softball Lessons in Alvin, TX | Bottom of the Ninth">
+<meta name="twitter:description" content="Indoor hitting, pitching, fielding and catching instruction in Alvin, Texas, taught by coaches from the Alvin College staff.">
+<meta name="twitter:image" content="https://b9baseball.com/images/web/og-team.jpg">
+
+<link rel="icon" href="/images/favicon.ico" sizes="any">
+<link rel="icon" href="/images/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
+<!-- GA4: NOT PROVISIONED. The operator must create the property in the Onside
+     GA4 account, then replace G-XXXXXXXXXX in both places below and uncomment
+     this block on every page. Tracked in CONTENT-TODO.md.
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+
+<!-- Google Search Console: NOT VERIFIED. Preferred method is a DNS TXT record
+     on b9baseball.com (survives deploys). If the operator chooses HTML tag
+     verification instead, the meta tag goes here. Tracked in CONTENT-TODO.md. -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "@id": "https://b9baseball.com/#academy",
+  "name": "Bottom of the Ninth Baseball and Softball Academy",
+  "alternateName": "B9",
+  "url": "https://b9baseball.com/",
+  "description": "Indoor youth baseball and softball training in Alvin, Texas. Private and small-group hitting, pitching, fielding and catching instruction, plus select travel teams.",
+  "image": "https://b9baseball.com/images/web/og-team.jpg",
+  "telephone": "+1-832-384-5503",
+  "email": "bottomoftheninthbaseball@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1115 S Gordon St",
+    "addressLocality": "Alvin",
+    "addressRegion": "TX",
+    "postalCode": "77511",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 29.413916,
+    "longitude": -95.247977
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "16:00",
+    "closes": "22:00"
+  },
+  "sport": ["Baseball", "Softball"],
+  "sameAs": [
+    "https://www.facebook.com/b9baseball",
+    "https://www.instagram.com/b9_baseball",
+    "https://x.com/b9_baseball"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://b9baseball.com/#business",
+  "name": "Bottom of the Ninth Baseball and Softball Academy",
+  "url": "https://b9baseball.com/",
+  "image": "https://b9baseball.com/images/web/og-team.jpg",
+  "telephone": "+1-832-384-5503",
+  "email": "bottomoftheninthbaseball@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1115 S Gordon St",
+    "addressLocality": "Alvin",
+    "addressRegion": "TX",
+    "postalCode": "77511",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 29.413916,
+    "longitude": -95.247977
+  },
+  "openingHours": "Mo-Fr 16:00-22:00",
+  "sameAs": [
+    "https://www.facebook.com/b9baseball",
+    "https://www.instagram.com/b9_baseball",
+    "https://x.com/b9_baseball"
+  ]
+}
+</script>
+<!-- geo coordinates are read off the Google Maps place marker for
+     "Bottom of the Ninth Baseball" used in the embed below. Confirm them
+     against the Google Business Profile once the listing is claimed. -->
 </head>
-<body class="min-h-screen bg-white">
-    <!-- Header -->
-    <header class="w-full border-b bg-white">
-        <div class="container mx-auto px-4">
-            <!-- Logo Centered -->
-            <div class="flex justify-center pt-4">
-                <div class="flex flex-col items-center gap-2">
-                    <span class="text-5xl font-bold">Bottom of the Ninth</span>
-                    <img src="images/B9-plate.png" alt="B9 Academy Logo">
-                </div>
-            </div>
-            <!-- Navigation -->
-            <nav class="sticky hidden md:flex items-center justify-center gap-12 py-4">
-                <a href="#coaches" class="text-base font-medium hover:text-primary transition-colors">Coaches</a>
-                <a href="#gallery" class="text-base font-medium hover:text-primary transition-colors">Gallery</a>
-                <a href="#contact" class="text-base font-medium hover:text-primary transition-colors">Contact</a>
-            </nav>
-        </div>
-    </header>
+<body>
 
-    <!-- Hero Section -->
-    <section class="relative h-[400px]">
-        <div class="absolute inset-0 bg-black/50">
-            <div class="container mx-auto px-4 flex h-full flex-col items-center justify-center text-center text-white">
-                <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                    Develop Your Game
-                </h1>
-                <p class="mt-4 max-w-[900px] text-lg text-gray-200 sm:text-xl">
-                    Elite baseball and softball training for players of all ages
-                </p>
-                <a href="#contact" 
-                   class="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-base font-medium text-white hover:bg-primary/90 transition-colors">
-                    Start Training Today
-                </a>
-            </div>
-        </div>
-    </section>
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Mission Statement -->
-    <section id="about" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Mission</h2>
-            <p class="mx-auto mt-4 max-w-[900px] text-gray-600"></p>
-                Bottom of the Ninth B9 is operated by a group of dedicated coaches whose sole mission is to accelerate the
-            development of our athletes knowledge and awareness of the game of baseball and softball. This has given
-            our players a competitive edge on the diamond. Our knowledge and experience of both the game and correct
-            biomechanical movements have created exceptional baseball and softball players who compete at every level.
-            Experienced and motivated instructors spend countless hours every year developing players both in our
-            indoor facility and on the field with our select programs. Our purpose is to develop a future for your
-            athlete on and off the field giving them life tools to achieve greatness. Join the B9 family today and
-            start your path to success!
-            </p>
-        </div>
-    </section>
+<header>
+  <div class="topbar">
+    <a class="logo" href="/" aria-label="Bottom of the Ninth home">
+      <img class="logo-mark" src="/images/b9_plate_logo.svg" alt="" width="42" height="42">
+      <span>
+        <span class="logo-word">Bottom of the <span>Ninth</span></span>
+        <span class="logo-sub">Baseball and Softball Academy, Alvin TX</span>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/programs/">Programs</a>
+      <a href="/coaches/">Coaches</a>
+      <a href="/teams/">Teams &amp; Results</a>
+      <a href="/camps/">Camps &amp; Events</a>
+      <a href="/lessons/" class="nav-cta">Request a Lesson</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- Coaches Section -->
-    <section id="coaches" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
-                Our Coaches
-            </h2>
-            <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-                <!-- Coach 1 -->
-                <div class="border bg-white shadow-sm">
-                    <div class="aspect-square relative hidden">
-                        <img src="/placeholder.svg?height=400&width=400" 
-                             alt="Coach 1"
-                             class="h-full w-full object-cover rounded-t-lg hidden">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Zak Ellis</h3>
-                        <p class="text-gray-600">
-                            A 15 year veteran coach at the D1 JUCO level Zak has dedicated more than 35 years of his life to the sport of baseball.  Responsible for player developement at Alvin College for the last 15 years, Zak has helped hundreds of player move on to the next level.  He has also developed several players at the pro level playing as high as the MLB. 
-      <br><br>Zak was a three year letterman at Ball High School from 92’ to 95’  as well as two years at Eastfield College in Dallas TX. His knowledge of kinesiology has allowed him to become one of the top hitting instructors in the Houston area.
-                        </p>
-                    </div>
-                </div>
-                <!-- Coach 2 -->
-                <div class="border bg-white shadow-sm">
-                    <div class="aspect-square relative hidden">
-                        <img src="/placeholder.svg?height=400&width=400" 
-                             alt="Coach 2"
-                             class="h-full w-full object-cover rounded-t-lg">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Jason Schreiber</h3>
-                        <p class="text-gray-600">
-                            As a baseball coach at Alvin College in Texas since 2000, Jason Schreiber has sent more than one hundred players to the Division I level and twenty into the pros with two of those making MLB rosters.
-          <br><br>
-          Schreiber holds a bachelor’s degree in sports administration from the University of Houston and a master’s degree in fitness and human performance from the University of Houston at Clear Lake. 
-          <br><br>
-          As a player before his coaching career, Schreiber was named Houston high school player of the year at Bellaire High School in 1993. His college career included one season at the University of Kansas, one season at San Jacinto Junior College and two seasons for the University of Houston where he was named to the all-Southwest Conference baseball team in 1996.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="main">
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
-                Gallery
-            </h2>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
-                <!-- Gallery Images -->
-                <div class="relative overflow-hidden col-span-2">
-                    <img src="images/b9_team_1.jpeg" 
-                         alt="B9 Summer Team"
-                         class="object-cover border-2">
-                </div>
+<div class="hero">
+  <div>
+    <span class="eyebrow">Youth Baseball &amp; Softball, Alvin TX</span>
+    <h1>Helping Your Player <em>Develop Their Game</em></h1>
+    <p class="lead">Indoor hitting, pitching, fielding and catching instruction, taught by coaches with Division I and JUCO backgrounds. A comfortable, well-run place to bring your kid after school.</p>
+    <div class="ctas">
+      <a href="/lessons/" class="btn btn-primary">Request a Lesson</a>
+      <a href="/programs/" class="btn btn-ghost">See Our Programs</a>
+    </div>
+  </div>
+  <div class="hero-photos">
+    <img class="p1" src="/images/facility_1.jpg" alt="Inside the B9 indoor training facility in Alvin, TX" width="436" height="327">
+    <img class="p2" src="/images/facility_2.jpg" alt="A hitting and pitching cage lane inside the B9 facility" width="434" height="326">
+  </div>
+</div>
 
-                <div class="aspect-video relative overflow-hidden">
-                    <img src="images/facility_1.jpg" 
-                         alt="B9 Facility"
-                         class="h-full w-full object-cover">
-                </div>
-                <div class="aspect-video relative overflow-hidden">
-                    <img src="images/facility_2.jpg" 
-                         alt="Facility 2"
-                         class="h-full w-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="facts">
+  <div class="wrap">
+    <span>Baseball &amp; Softball</span>
+    <span>Mon-Fri, 4-10 PM</span>
+    <span>Indoor Facility</span>
+    <span>1115 S Gordon St, Alvin TX</span>
+  </div>
+</div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
-                Contact Us
-            </h2>
-            <div class="grid gap-8 lg:grid-cols-2">
-                <!-- Contact Information -->
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Location</h3>
-                        <p class="text-gray-600">
-                            1115 S Gordon St.<br>
-                            Alvin, TX 77511<br>
-                            (located on 2nd floor of Cash Cow Pawn)
-                        </p>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Contact Information</h3>
-                        <div class="space-y-2 text-gray-600">
-                            <p>Phone:(832) 384-5503</p>
-                            <p>Email: bottomoftheninthbaseball@gmail.com</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Hours of Operation</h3>
-                        <div class="space-y-1 text-gray-600">
-                            <p>Monday - Friday: 4:00 PM - 10:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <a href="https://www.facebook.com/b9baseball" class="text-gray-600 hover:text-primary transition-colors" aria-label="Facebook">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/b9_baseball" class="text-gray-600 hover:text-primary transition-colors" aria-label="Instagram">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                        <a href="https://x.com/b9_baseball" class="text-gray-600 hover:text-primary transition-colors" aria-label="Twitter">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <!-- Map -->
-                <div class="h-[400px] overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5548.984929263719!2d-95.24797713180548!3d29.413915738406033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145dd2b24e2f0bf9%3A0x12f2d30c69f74b71!2sBottom%20of%20the%20Ninth%20Baseball!5e0!3m2!1sen!2sus!4v1740630446096!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="programs" class="programs">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What We Teach</span>
+      <h2>Programs for Every Player</h2>
+      <p>Whether your player is picking up a bat for the first time or trying out for a select team, we build a plan around their level.</p>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h3>Hitting</h3>
+        <p>One-on-one and small-group swing work focused on mechanics your player can actually feel and repeat.</p>
+      </div>
+      <div class="prog-card">
+        <h3>Pitching</h3>
+        <p>Delivery and command training for new arms and experienced ones, at a pace that protects long-term health.</p>
+      </div>
+      <div class="prog-card">
+        <h3>Fielding &amp; Catching</h3>
+        <p>Fundamentals for every position, from first-step quickness to the details of catching behind the plate.</p>
+      </div>
+      <div class="prog-card">
+        <h3>Select Teams</h3>
+        <p>A path for players ready to compete, with B9 squads registered through Perfect Game.</p>
+      </div>
+    </div>
+    <p style="margin-top:28px"><a href="/programs/">See all programs and what they cost</a></p>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="border-t py-8">
-        <div class="container mx-auto px-4 flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div class="flex items-center gap-2">
-                <img src="images/b9_plate_logo.svg" alt="B9 Academy Logo" class="w-auto">
-                <span class="text-sm font-medium">Bottom of the Ninth Academy</span>
-            </div>
-            <p class="text-sm text-gray-600">
-                © 2024 Bottom of the Ninth Academy. All rights reserved.
-            </p>
+<section id="results" class="results">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">On the Scoreboard</span>
+      <h2>Results and Alumni</h2>
+      <p>Development shows up in games. Here is what our teams and our coaching staff have put on the board.</p>
+    </div>
+
+    <div class="score-strip">
+      <div class="score">
+        <span class="n">10-6-1</span>
+        <span class="l">17U season record</span>
+        <span class="src">Per Perfect Game. <span class="tk">[TK: confirm season year with Zak]</span></span>
+      </div>
+      <div class="score">
+        <span class="n">9</span>
+        <span class="l">Perfect Game top-3 finishes</span>
+        <span class="src">17U squad, per Perfect Game.</span>
+      </div>
+      <div class="score">
+        <span class="n">2</span>
+        <span class="l">Select teams registered with Perfect Game</span>
+        <span class="src">16U and 17U, head coach Zachary Ellis.</span>
+      </div>
+    </div>
+
+    <div class="alumni-wall">
+      <div class="alumni-card">
+        <span class="tag">Coaching Staff Record</span>
+        <h3>100+ to Division I</h3>
+        <p>Players coached by Jason Schreiber at Alvin College since 2000 who moved on to the Division I level.</p>
+      </div>
+      <div class="alumni-card">
+        <span class="tag">Coaching Staff Record</span>
+        <h3>20 to Pro Ball</h3>
+        <p>Schreiber has sent twenty players into professional baseball, two of them onto Major League rosters.</p>
+      </div>
+      <div class="alumni-card">
+        <span class="tag">Coaching Staff Record</span>
+        <h3>Hundreds Developed</h3>
+        <p>Zak Ellis has helped hundreds of players move on to the next level across fifteen years of player development at Alvin College, several of them reaching pro ball.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:22px">
+      <span class="tk-block">[TK: B9 academy alumni wall. The three figures above are the coaching staff's college program records, not B9 academy placements. Zak to supply named B9 alumni: player name, grad year, college or organization signed with, and written permission to publish each name. Until that list exists this section stays labeled as staff record.]</span>
+    </p>
+
+    <p style="margin-top:22px"><a href="/teams/">Travel teams, tryouts and full results</a></p>
+  </div>
+</section>
+
+<section id="coaches" class="coaches">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Meet the Coaches</span>
+      <h2>Coaches Who Have Been There</h2>
+      <p>Both of our lead instructors coach at the college level and have spent years helping players get recruited and drafted.</p>
+    </div>
+    <div class="coach-grid">
+      <div class="coach-card">
+        <span class="role">Hitting Instructor</span>
+        <h3>Zak Ellis</h3>
+        <p>A fifteen-year veteran coach at the Division I JUCO level, Zak has given more than thirty-five years of his life to baseball. Responsible for player development at Alvin College for the last fifteen years, he has helped hundreds of players move on to the next level, including several who reached pro ball as high as the Major Leagues.</p>
+        <p>Zak was a three-year letterman at Ball High School and spent two years at Eastfield College in Dallas. His knowledge of kinesiology has made him one of the top hitting instructors in the Houston area.</p>
+      </div>
+      <div class="coach-card">
+        <span class="role">Pitching Instructor</span>
+        <h3>Jason Schreiber</h3>
+        <p>A baseball coach at Alvin College since 2000, Jason has sent more than one hundred players to the Division I level and twenty into the pros, two of them onto Major League rosters.</p>
+        <p>He holds a bachelor's degree in sports administration from the University of Houston and a master's in fitness and human performance from the University of Houston at Clear Lake.</p>
+      </div>
+    </div>
+    <p style="margin-top:28px"><a href="/coaches/">Read the full coach bios</a></p>
+  </div>
+</section>
+
+<section id="camps">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Camps &amp; Events</span>
+      <h2>School Breaks and Off-Season Camps</h2>
+      <p>Multi-day camps run through school breaks and the off-season. Each one has its own page with times, ages and how to register.</p>
+    </div>
+    <div class="event-list">
+      <article class="event-card">
+        <div class="event-when">
+          <span class="badge badge-open">Placeholder</span><br>
+          <span class="tk">[TK: dates]</span>
         </div>
-    </footer>
+        <div>
+          <h3><a href="/camps/tk-winter-hitting-camp/">Winter Hitting Camp</a></h3>
+          <p>Example of an upcoming camp page. Dates, times, ages and price are not set.</p>
+        </div>
+        <div><a class="btn btn-ghost" href="/camps/tk-winter-hitting-camp/">Details</a></div>
+      </article>
+    </div>
+    <p style="margin-top:28px"><a href="/camps/">See all camps and events</a></p>
+  </div>
+</section>
+
+<section id="visit" class="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Plan Your Visit</span>
+      <h2>Hours, Location &amp; Contact</h2>
+      <p>We are open weekday afternoons and evenings so lessons fit around school and other sports.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card">
+        <h3>Location &amp; Hours</h3>
+        <div class="visit-row"><span class="k">Address</span><span>1115 S Gordon St, Alvin, TX 77511<br>Second floor, above Cash Cow Pawn</span></div>
+        <div class="visit-row"><span class="k">Hours</span><span>Monday - Friday, 4:00 PM - 10:00 PM</span></div>
+        <div class="visit-row"><span class="k">Ages</span><span><span class="tk">[TK: age range served - confirm with Zak]</span></span></div>
+      </div>
+      <div class="visit-card">
+        <h3>Talk to Us</h3>
+        <div class="visit-row"><span class="k">Phone</span><span><a href="tel:+18323845503">(832) 384-5503</a></span></div>
+        <div class="visit-row"><span class="k">Email</span><span><a href="mailto:bottomoftheninthbaseball@gmail.com">bottomoftheninthbaseball@gmail.com</a></span></div>
+        <div class="visit-row"><span class="k">New here?</span><span>Fill out the form below and we will call to get you scheduled.</span></div>
+      </div>
+    </div>
+    <iframe class="map-frame" title="Map to Bottom of the Ninth Baseball, 1115 S Gordon St, Alvin TX" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5548.984929263719!2d-95.24797713180548!3d29.413915738406033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145dd2b24e2f0bf9%3A0x12f2d30c69f74b71!2sBottom%20of%20the%20Ninth%20Baseball!5e0!3m2!1sen!2sus!4v1740630446096!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Ready to Start?</span>
+      <h2>Request a Lesson</h2>
+      <p>Tell us a little about your player and we will follow up to find a time that works.</p>
+    </div>
+
+    <!-- Onside shared lead endpoint. Keep this block in sync with the copy on
+         /lessons/index.html; the endpoint contract itself lives in one place,
+         /js/lead-form.js. Do not add an `action` or a client token: the tenant
+         is resolved from the request Origin, and the POST is made by the JS. -->
+    <form class="onside-lead-form" data-thanks="lesson-thanks">
+      <div class="hp" aria-hidden="true">
+        <label for="home-website">Leave this field blank</label>
+        <input type="text" id="home-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="home-parent-name">Parent Name</label>
+          <input type="text" id="home-parent-name" name="parent_name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="home-player-name">Player Name</label>
+          <input type="text" id="home-player-name" name="player_name" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="home-player-age">Player Age / Grad Year</label>
+          <input type="text" id="home-player-age" name="player_age" required>
+        </div>
+        <div class="field">
+          <label for="home-sport">Baseball or Softball</label>
+          <select id="home-sport" name="sport" required>
+            <option value="">Select one</option>
+            <option value="baseball">Baseball</option>
+            <option value="softball">Softball</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="home-need">What do you want help with?</label>
+        <textarea id="home-need" name="training_need" rows="3" placeholder="Hitting, pitching, fielding, select team tryout, etc."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="home-phone">Phone</label>
+          <input type="tel" id="home-phone" name="phone" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="home-email">Email</label>
+          <input type="email" id="home-email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Request a Lesson</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+    </form>
+
+    <div class="form-thanks" id="lesson-thanks" hidden>
+      <h3>Thanks, we have your request.</h3>
+      <p>One of our coaches will call or email you to get a lesson on the schedule. If you need us sooner, call <a href="tel:+18323845503">(832) 384-5503</a> during our hours, Monday to Friday 4:00 PM to 10:00 PM.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Bottom of the Ninth</h2>
+        <p>Baseball and Softball Academy<br>
+        1115 S Gordon St, Alvin, TX 77511<br>
+        Second floor, above Cash Cow Pawn</p>
+        <p style="margin-top:10px">
+          <a href="https://www.facebook.com/b9baseball">Facebook</a> &middot;
+          <a href="https://www.instagram.com/b9_baseball">Instagram</a> &middot;
+          <a href="https://x.com/b9_baseball">X</a>
+        </p>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="/programs/">Programs &amp; Pricing</a></li>
+          <li><a href="/coaches/">Coaches</a></li>
+          <li><a href="/teams/">Travel Teams &amp; Results</a></li>
+          <li><a href="/camps/">Camps &amp; Events</a></li>
+          <li><a href="/lessons/">Request a Lesson</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Visit</h2>
+        <ul>
+          <li>Monday - Friday</li>
+          <li>4:00 PM - 10:00 PM</li>
+          <li><a href="tel:+18323845503">(832) 384-5503</a></li>
+          <li><a href="mailto:bottomoftheninthbaseball@gmail.com">bottomoftheninthbaseball@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright 2026 Bottom of the Ninth Baseball and Softball Academy. All rights reserved.</span>
+      <span>Site by <a href="https://onside.llc">Onside</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/lead-form.js" defer></script>
 </body>
 </html>

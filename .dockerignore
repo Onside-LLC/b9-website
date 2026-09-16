@@ -1,0 +1,19 @@
+# Everything in the repo is site content and gets served, EXCEPT what is listed
+# here. Anything added to the repo that is not meant to be public — internal
+# notes, build tooling, deploy config — must be added to this list.
+#
+# config/ is the one exception that stays in the context: the Dockerfile needs
+# config/nginx.conf, and .dockerignore would put it out of reach. The Dockerfile
+# deletes it from the served root instead.
+.git
+.gitignore
+.github
+.kamal
+config/deploy.yml
+docs
+README.md
+CONTENT-TODO.md
+Dockerfile
+.dockerignore
+.DS_Store
+**/.DS_Store
