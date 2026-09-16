@@ -11,8 +11,18 @@ FROM nginx:1.27-alpine
 # Server config: gzip, cache headers, security headers, /up healthcheck.
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Site content. Add new top-level files/directories here as the site grows.
-COPY index.html /usr/share/nginx/html/index.html
-COPY images/ /usr/share/nginx/html/images/
+# Site content: the whole build context, minus whatever .dockerignore drops.
+#
+# Deliberately NOT an enumerated list of top-level files. The previous version
+# copied only index.html and images/, which silently 404s every page, the
+# stylesheet and the script the moment the site grows past one page — exactly
+# what happened when the concept B build added css/, js/ and five directories
+# of pages. The exclusion list is the thing to maintain; adding a page is not
+# supposed to require a Dockerfile edit.
+COPY . /usr/share/nginx/html/
+
+# config/ is in the build context only so the COPY above it can reach
+# nginx.conf. It is not site content and must not be served.
+RUN rm -rf /usr/share/nginx/html/config
 
 EXPOSE 80
