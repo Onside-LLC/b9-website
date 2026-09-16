@@ -18,6 +18,11 @@ images/                 photography, logos, favicons
 robots.txt
 sitemap.xml             hand-maintained; there is nothing to generate it from
 CONTENT-TODO.md         every open question, and who owes the answer
+Dockerfile              nginx container
+.dockerignore           what stays out of the image (internal notes, deploy config)
+config/nginx.conf       server config baked into the container
+config/deploy.yml       Kamal 2 deploy to onside-web
+docs/hosting.md         hosting and cutover runbook
 ```
 
 Design is concept B ("Family Friendly Local") from the B9 market brief, with
@@ -39,6 +44,18 @@ python3 -m http.server 8000
 URLs are directory-per-page. nginx serves `/programs/` from
 `programs/index.html` and redirects `/programs` to it; the local server above
 behaves the same way.
+
+To check what actually ships, build the container:
+
+```sh
+docker build -t b9-baseball .
+docker run --rm -p 8080:80 b9-baseball
+# http://localhost:8080  and  http://localhost:8080/up
+```
+
+The image copies the build context and excludes what must not be public.
+Adding a page needs no `Dockerfile` edit; adding an internal file that should
+not be served needs a `.dockerignore` entry.
 
 ## Content rules
 
@@ -71,10 +88,15 @@ the intended behaviour until the endpoint ships and `Client id=8` has
 
 The site runs on Onside-operated infrastructure: an nginx container on the
 `onside-web` droplet, deployed with Kamal 2 and fronted by kamal-proxy with
-Let's Encrypt. That layer lands separately in PR #4; see `docs/hosting.md`
-after it merges for the first deploy, the DNS cutover off DigitalOcean App
-Platform, teardown of the old host, and rollback.
+Let's Encrypt.
 
-Whichever of the two branches merges second must extend the `COPY` lines in
-`Dockerfile`: it currently copies only `index.html` and `images/`, which
-predates every directory listed above.
+```sh
+kamal deploy
+```
+
+Secrets are never committed. `.kamal/secrets` is gitignored; copy
+`.kamal/secrets.example` and export the GHCR credentials in your shell.
+
+See [docs/hosting.md](docs/hosting.md) for the full runbook: first deploy,
+the DNS cutover off DigitalOcean App Platform, teardown of the old host, and
+rollback.
