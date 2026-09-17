@@ -68,6 +68,22 @@ curl -sS  https://b9.onside.llc/ | head   # the B9 page
 kamal app logs -n 50
 ```
 
+This is a multi-page site, so check the URL shape too, not just the home page:
+
+```sh
+for p in / /programs/ /coaches/ /teams/ /camps/ /lessons/ /robots.txt /sitemap.xml; do
+  curl -sS -o /dev/null -w "%{http_code} $p\n" "https://b9.onside.llc$p"
+done                                        # all 200
+
+curl -sSI https://b9.onside.llc/programs    # 301, Location: /programs/ (relative)
+curl -sS -o /dev/null -w "%{http_code}\n" https://b9.onside.llc/no-such-page
+                                            # 404, and the body is the site's
+                                            # own 404 page, not nginx's
+```
+
+A `200` on that last one would mean the site is answering every wrong URL with
+a real page, which is worse than a 404: Google indexes the duplicates.
+
 Load the page in a browser and confirm the hero, gallery images, the coaches
 and contact sections, and the embedded map all render.
 
@@ -84,7 +100,8 @@ and contact sections, and the embedded map all render.
    certificate warning — this is the only user-visible risk window, so cut
    over outside academy hours (Mon-Fri 4-10 PM CT).
 4. Confirm the page over HTTPS with no App Platform headers present
-   (`x-do-app-origin` gone, `server: nginx` suppressed by `server_tokens off`).
+   (`x-do-app-origin` gone, and `Server: nginx` carrying no version number;
+   `server_tokens off` suppresses the version, not the header).
 
 ## Teardown — only after verification
 

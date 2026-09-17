@@ -12,6 +12,7 @@ teams/                  travel teams, results, alumni wall
 camps/                  camps and events index
 camps/<slug>/           one page per dated event, SportsEvent JSON-LD
 lessons/                lesson inquiry form (the only interactive surface)
+404.html                served as the body of every 404; noindex, not in the sitemap
 css/site.css            the whole design system
 js/lead-form.js         the Onside shared lead endpoint client
 images/                 photography, logos, favicons
@@ -52,6 +53,11 @@ docker build -t b9-baseball .
 docker run --rm -p 8080:80 b9-baseball
 # http://localhost:8080  and  http://localhost:8080/up
 ```
+
+`404.html` is one of the things only the container gets right: nginx serves it
+as the body of every 404, while `python3 -m http.server` answers with its own
+plain one. Check it with `curl -i http://localhost:8080/no-such-page` and
+expect a `404` status carrying the site's page, not a `200`.
 
 The image copies the build context and excludes what must not be public.
 Adding a page needs no `Dockerfile` edit; adding an internal file that should

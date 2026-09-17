@@ -21,7 +21,8 @@ blocker on cutover (b9-website#2).
 | **Lead endpoint live** | Onside | `onside-rails#109` must merge and deploy. Until it does, every form on this site disables itself and shows the phone number. Do not cut over with a dead form. |
 | **Client id=8 configured** | Onside | In the onside-rails dashboard: `form_origin = https://b9baseball.com`, `lead_recipient_emails = [bottomoftheninthbaseball@gmail.com]` plus an Onside fallback. |
 | **End-to-end form test** | Onside | From the live `b9baseball.com` origin: submission lands as a row in onside-rails, email reaches Zak, entry visible in the dashboard. |
-| **Kamal hosting merged** | Onside | PR #4. Its `Dockerfile` copies only `index.html` and `images/`; it needs the new directories added before this site can be served. See the note at the bottom of this file. |
+| **Kamal hosting merged** | Onside | PRs #6 -> #4 -> #5, in that order. #6 rewrote the `Dockerfile` to copy the whole build context, so the new directories are already covered; nothing has to be hand-edited at merge time. |
+| **Privacy notice** | Zak + Onside | The lesson form collects a **minor's** name and age along with a parent's name, email and phone, and posts them to Onside's servers. The site has no privacy page and no footer link to one. Not written here on purpose: it is a statement Zak makes about his own business and needs his sign-off. `onside.llc/privacy` is the nearest model. |
 | **Canonical phone number** | Zak | The site, the brief and this build all use **(832) 384-5503**. Directories carry **409-539-2515**. One of them is wrong and GBP plus NAP cleanup cannot start until Zak says which. |
 
 ## 2. Content Zak owes us
@@ -112,9 +113,11 @@ No Payment Link exists today because no camp has a date or a price.
 
 ## Note for whoever merges PR #4
 
-`Dockerfile` on `feature/kamal-hosting` copies only `index.html` and `images/`.
-This branch adds `css/`, `js/`, `programs/`, `coaches/`, `teams/`, `camps/`,
-`lessons/`, `robots.txt` and `sitemap.xml`, none of which would be in the image.
-Whichever branch merges second has to extend the `COPY` lines. The nginx config
-itself needs no change: `try_files $uri $uri/ =404` already serves the
-directory-per-page URL shape, and `gzip_types` already covers CSS and JS.
+Merge order is **#6 -> #4 -> #5** and there is nothing to hand-resolve.
+
+The old warning here said the `Dockerfile` on `feature/kamal-hosting` copied
+only `index.html` and `images/`, and that whichever branch merged second had to
+extend the `COPY` lines by hand. PR #6 replaced those enumerated `COPY`s with a
+copy of the build context plus a `.dockerignore`, so adding a page no longer
+touches the `Dockerfile` at all. The `README.md` conflict between the two
+branches has also been resolved on #5.
