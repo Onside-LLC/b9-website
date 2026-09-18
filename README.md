@@ -15,12 +15,15 @@ lessons/                lesson inquiry form (the only interactive surface)
 404.html                served as the body of every 404; noindex, not in the sitemap
 css/site.css            the whole design system
 js/lead-form.js         the Onside shared lead endpoint client
-images/                 photography, logos, favicons
+images/                 web-ready art the pages link to (photos, logo, favicons)
+images/web/             derivatives cut for a specific slot (OG card, teams strip)
+images/source/          originals and retired brand art; kept in git, never served
 robots.txt
 sitemap.xml             hand-maintained; there is nothing to generate it from
 CONTENT-TODO.md         every open question, and who owes the answer
 Dockerfile              nginx container
-.dockerignore           what stays out of the image (internal notes, deploy config)
+.dockerignore           what stays out of the image (internal notes, deploy config,
+                        images/source)
 config/nginx.conf       server config baked into the container
 config/deploy.yml       Kamal 2 deploy to onside-web
 docs/hosting.md         hosting and cutover runbook
