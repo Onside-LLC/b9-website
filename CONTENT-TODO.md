@@ -32,9 +32,9 @@ blocker on cutover (b9-website#2).
 | `/programs/` | Private lesson price and length; small-group price and size; package pricing if offered; cage rental rate. "From $X" floor rates are an acceptable fallback and still beat an empty page. |
 | `/programs/`, `/coaches/` | Sub-lease coach roster: names, specialty, ages served, consent to be listed, and whether inquiries route to the coach or back to Zak. |
 | `/coaches/` | Who coaches softball, what is offered and for what ages. "Softball pitching coach near me" is a live search term in the market brief and the site currently answers it with nothing. |
-| `/coaches/` | Current high-resolution interior facility photos, or a booked shoot. The two interior shots in the repo are under 450px wide. |
+| `/coaches/` | Current high-resolution interior facility photos, or a booked shoot. The two interior shots in the repo are under 450px wide. The unused originals live in `images/source/` (not served); process one into `images/` and link it when a usable shot exists. |
 | `/teams/` | Which season the 17U 10-6-1 record covers; direct Perfect Game team-page URLs for 16U and 17U; which age groups are fielded this season; tryout dates, roster sizes and team fees. |
-| `/teams/` | What the archive photos actually show. The file names suggest a 14U fall state championship, but nothing corroborates the title, year or league, so the captions stay neutral until Zak confirms. |
+| `/teams/` | What the archive photos actually show. The file names suggest a 14U fall state championship, but nothing corroborates the title, year or league, so the captions stay neutral until Zak confirms. The full-size originals are in `images/source/`. |
 | `/teams/`, `/` | The real alumni wall: per player, name, high school, graduating class, the college or organization signed with, and written permission to publish. Minors need parent consent. The three cards live today are the **coaching staff's** college program records and are labeled that way on purpose. |
 | `/` | Age range served. Concept B said 8U to 18U; nothing verifies it, so the site says "baseball and softball" until Zak confirms. |
 | `/lessons/` | Typical callback time, what players should bring, and whether parents watch from the side of the cage. |

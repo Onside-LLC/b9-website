@@ -17,3 +17,13 @@ Dockerfile
 .dockerignore
 .DS_Store
 **/.DS_Store
+
+# Unprocessed originals and retired brand art. Kept in git on purpose (they are
+# B9's photographs and the raw material for every derivative in images/), but no
+# page links to them, so shipping them was 27 MB of dead weight in a 28 MB image
+# and a 16 MB PNG anyone could pull off the public site.
+#
+# The rule: images/ is what the site serves, images/source/ is what it was made
+# from. Process an original into images/ or images/web/ and link it from a page
+# and it ships. No enumeration, same as the COPY it replaced.
+images/source
