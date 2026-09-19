@@ -21,7 +21,7 @@ blocker on cutover (b9-website#2).
 | **Lead endpoint live** | Onside | `onside-rails#109` must merge and deploy. Until it does, every form on this site disables itself and shows the phone number. Do not cut over with a dead form. |
 | **Client id=8 configured** | Onside | In the onside-rails dashboard: `form_origin = https://b9baseball.com`, `lead_recipient_emails = [bottomoftheninthbaseball@gmail.com]` plus an Onside fallback. |
 | **End-to-end form test** | Onside | From the live `b9baseball.com` origin: submission lands as a row in onside-rails, email reaches Zak, entry visible in the dashboard. |
-| **Kamal hosting merged** | Onside | PRs #6 -> #4 -> #5, in that order. #6 rewrote the `Dockerfile` to copy the whole build context, so the new directories are already covered; nothing has to be hand-edited at merge time. |
+| **Kamal hosting merged** | Onside | Five stacked PRs, in order: **#4 -> #6 -> #5 -> #7 -> #8**. Merge each one with **"Create a merge commit"**: squash and rebase both rewrite the commits and break the chain. See the note at the end of this file. #6 rewrote the `Dockerfile` to copy the whole build context, so the new directories are already covered; nothing has to be hand-edited at merge time. |
 | **Privacy notice** | Zak + Onside | The lesson form collects a **minor's** name and age along with a parent's name, email and phone, and posts them to Onside's servers. The site has no privacy page and no footer link to one. Not written here on purpose: it is a statement Zak makes about his own business and needs his sign-off. `onside.llc/privacy` is the nearest model. |
 | **Canonical phone number** | Zak | The site, the brief and this build all use **(832) 384-5503**. Directories carry **409-539-2515**. One of them is wrong and GBP plus NAP cleanup cannot start until Zak says which. |
 
@@ -111,13 +111,51 @@ No Payment Link exists today because no camp has a date or a price.
    camps surface is built as real URLs.
 8. Once real camps exist, delete both `camps/tk-*` placeholder directories.
 
-## Note for whoever merges PR #4
+## Note for whoever merges this stack
 
-Merge order is **#6 -> #4 -> #5** and there is nothing to hand-resolve.
+Merge order is **#4 -> #6 -> #5 -> #7 -> #8**, and every one of them has to be
+merged with **"Create a merge commit"**.
 
-The old warning here said the `Dockerfile` on `feature/kamal-hosting` copied
-only `index.html` and `images/`, and that whichever branch merged second had to
+These are not five independent branches off `main`. They are a single strict
+ancestry chain, re-verified against live `gh` and `git merge-tree` output on
+2026-09-18:
+
+    main
+      #4  feature/kamal-hosting               base: main
+      #6  fix/dockerfile-serve-full-site      base: feature/kamal-hosting
+      #5  feature/foundation-site-concept-b   base: main
+      #7  feature/not-found-page              base: feature/foundation-site-concept-b
+      #8  fix/unserved-image-originals        base: feature/not-found-page
+
+    Each line's head branch has the line above it as an ancestor.
+
+`feature/foundation-site-concept-b` already has both `feature/kamal-hosting` and
+`fix/dockerfile-serve-full-site` as ancestors, so #5 carries #4 and #6 with it.
+Simulated in the order above, the stack merges clean with nothing to
+hand-resolve, and the resulting tree is identical to #8's tree.
+
+**Squash is the trap, and this repo has squash enabled.** A squash (and a
+rebase, which also rewrites SHAs) replaces the merged commits with new ones, so
+the ancestry above stops holding the moment you squash any PR in the chain.
+Every remaining PR then falls back to `main` as its merge base and conflicts
+add/add on `Dockerfile`, `.dockerignore`, `config/nginx.conf`, `README.md` and
+`docs/hosting.md`: five files, all of them hand-resolved, for no benefit. Take
+the merge commit.
+
+Two earlier versions of this note are worth naming so their errors do not come
+back.
+
+The first said the `Dockerfile` on `feature/kamal-hosting` copied only
+`index.html` and `images/`, and that whichever branch merged second had to
 extend the `COPY` lines by hand. PR #6 replaced those enumerated `COPY`s with a
 copy of the build context plus a `.dockerignore`, so adding a page no longer
-touches the `Dockerfile` at all. The `README.md` conflict between the two
-branches has also been resolved on #5.
+touches the `Dockerfile` at all. Do not reintroduce enumerated `COPY` lines:
+they build green and 404 every page added after them.
+
+The second gave the order as "#6 -> #4 -> #5" and stopped at three PRs. The
+order itself is workable, but only if "#6 first" is read as merging #6 into
+`feature/kamal-hosting` rather than into `main`: #6's base is #4's branch, so
+#6 cannot reach `main` before #4 does. Stated as "#4 -> #6" above it is
+unambiguous either way. The real damage was stopping at three, which left #7
+and #8 (the 404 page and the 27 MB of unserved image originals) on branches
+whose bases had just been merged.
